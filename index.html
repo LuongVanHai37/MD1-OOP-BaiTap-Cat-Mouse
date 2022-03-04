@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Animal {
+        constructor(name, weight, speed, say) {
+            this.name = name;
+            this.weight = weight;
+            this.speed = speed;
+            this.say = say;
+        }
+
+        setName(name) {
+            this.name = name;
+        }
+
+        getName() {
+            return this.name;
+        }
+
+        setWeight(weight) {
+            this.weight = weight;
+        }
+
+        getWeight() {
+            return this.weight;
+        }
+
+        setSpeed(speed) {
+            this.speed = speed;
+        }
+
+        getSpeed() {
+            return this.speed;
+        }
+
+        setSay() {
+            this.say = say;
+        }
+
+        getSay() {
+            return this.say;
+        }
+    }
+
+    class Mouse extends Animal {
+        constructor(name, weight, speed, say, isDead) {
+            super(name, weight, speed, say);
+            this.isDead = isDead;
+        }
+
+        setIsDead(isDead) {
+            this.isDead = isDead;
+        }
+
+        getIsDead() {
+            if (this.isDead) {
+                console.log('Chuột chết');
+            } else {
+                console.log('Tao còn sống');
+            }
+            return this.isDead;
+        }
+    }
+
+    let mouse1 = new Mouse("Rat", 20, 10, 'CHÍT CHÍT', false)
+    let mouse2 = new Mouse("JERRY", 40, 5, "HA HA", true)
+
+    class Cat extends Animal {
+        constructor(name, weight, speed, say, isDead) {
+            super(name, weight, speed, say);
+        }
+
+        catchTheMouse(mouse) {
+            if (super.getSpeed() > mouse.speed) {
+                console.log('Chạy đâu con sâu');
+                mouse.setIsDead(true);
+            } else {
+                console.log('Chạy nhanh thế');
+                mouse.setIsDead(false);
+            }
+        }
+
+        eatTheMouse(mouse) {
+            if (mouse.getIsDead()) {
+                super.setWeight(super.getWeight() + mouse.getWeight());
+                console.log('No quá, lên cân rồi', super.getWeight());
+            }
+        }
+    }
+
+    let cat = new Cat("Cat", 30, 20, 'MEO MEO');
+    mouse1.setSpeed(30);
+
+</script>
+</body>
+</html>
